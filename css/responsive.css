@@ -1,0 +1,55 @@
+@media (width = 425px){
+    .ri-menu-line{
+        margin-left: 250px;
+    }
+    .ri-close-large-fill{
+        margin-left: 80px;
+        margin-top: -80px;
+    }
+    ul{
+        width: 60%;
+        margin-top: 450px;
+    }
+    li{
+        margin-left: -20px;
+    }
+    .main{
+        height: 2100px;
+    }
+    .mainh4-Top{
+        font-size: 18px;
+        margin-left: -20px;
+    }
+    .mainh1-heading{
+        font-size: 35px;
+        margin-left: 50px;
+    }
+    .main-paragraph_withlink{
+        margin-left: 60px;
+    }
+    .main-btn{
+        margin-left: 60px;
+        padding: 20px 40px;
+        font-size:16px;
+    }
+    .main-pic_rightside{
+        margin-left: 30px;
+        width: 350px;
+        margin-top: 100px;
+    }
+    .main_container{
+        flex-wrap: wrap;
+    }
+    .OurWay .ourway-h1_heading{
+        margin-left: -300px;
+        font-size: 40px;
+    }
+    .OurWay .ourway-paragraph{
+        margin-left: 20px;
+        font-size: 13px;
+        width: 400px;
+    }
+    .ourway-paragraph_span{
+        margin-left: -200px;
+    }
+}
