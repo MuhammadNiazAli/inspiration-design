@@ -1,55 +1,91 @@
-@media (width = 425px){
-    .ri-menu-line{
-        margin-left: 250px;
-    }
-    .ri-close-large-fill{
-        margin-left: 80px;
-        margin-top: -80px;
-    }
-    ul{
-        width: 60%;
-        margin-top: 450px;
-    }
-    li{
-        margin-left: -20px;
-    }
+/* ===================== Tablet & below (<=1024px) ===================== */
+@media (max-width:1024px){
+    :root{--side:5vw;}
+
     .main{
-        height: 2100px;
+        grid-template-columns:1fr;
+        grid-template-areas:
+            "tag"
+            "title"
+            "para"
+            "btn"
+            "img"
+            "boxes";
+        padding-top:110px;
     }
-    .mainh4-Top{
-        font-size: 18px;
-        margin-left: -20px;
+    .main-pic_rightside{justify-self:center;max-width:420px;margin-top:20px;}
+    .main-btn{justify-self:start;}
+
+    .ourprinter,.improve,.about,.Contactus{
+        grid-template-columns:1fr;
     }
-    .mainh1-heading{
-        font-size: 35px;
-        margin-left: 50px;
+    .ourprinter{grid-template-areas:"pic" "heading" "para" "link" "btn";}
+    .improve{grid-template-areas:"heading" "pic" "text" "link" "btn";}
+    .about{grid-template-areas:"pic" "heading" "tagline" "para" "link" "btn" "boxes";}
+    .Contactus{grid-template-areas:"pic" "heading" "p1" "btn";}
+
+    .ourprinter-pic,.improve-pic,.about-pic,.contact-pic{
+        max-width:480px;margin:0 auto;justify-self:center;
     }
-    .main-paragraph_withlink{
-        margin-left: 60px;
+    .ourprinter-h1_heading,.ourptinter-paragraph,
+    .improve-h1_heading,.pre-space,
+    .about-h1_heading,.about-paragraph,
+    .contact-h1_heading{max-width:100%;}
+
+    .contact-p1,.contact-p2,.contact-p3,.contact-p4,.contact-link{max-width:100%;}
+}
+
+/* ===================== Mobile (<=768px) ===================== */
+@media (max-width:768px){
+    :root{--side:6vw;}
+
+    header{height:76px;}
+    .logo{width:56px;}
+    ul{width:280px;padding:100px 30px 30px;}
+
+    .main{padding-top:100px;padding-bottom:50px;}
+    .mainh1-heading{font-size:clamp(28px,7vw,36px);}
+    .main-btn,.ourprinter-btn,.improve-btn,.about-btn{width:100%;text-align:center;justify-self:stretch;}
+    .main_container{margin-top:36px;}
+
+    .OurWay,.team,.Testimonials{padding-top:60px;padding-bottom:60px;}
+    .container2-ourway_box1,.container2-ourway_box2,.container2-ourway_box3,.container2-ourway_box4{min-height:auto;}
+
+    .team-container1_box1,.team-container1_box2,.team-container2_box3,.team-container2_box4{
+        grid-template-columns:90px 1fr;
     }
-    .main-btn{
-        margin-left: 60px;
-        padding: 20px 40px;
-        font-size:16px;
+    .team-container1box1_pic,.team-container1box2_pic{width:80px;height:80px;}
+
+    .ourprinter,.improve,.about,.Contactus,.Bethefirst,.main,.OurWay,.team,.Testimonials,.footer{
+        padding-left:var(--side);
+        padding-right:var(--side);
     }
-    .main-pic_rightside{
-        margin-left: 30px;
-        width: 350px;
-        margin-top: 100px;
+
+    .FORM{padding:36px 24px;}
+    .form-btn{align-self:stretch;text-align:center;}
+
+    .contact-btn{width:100%;text-align:center;justify-self:stretch;}
+
+    .footer-paragraph,.footerlink{padding-left:0;}
+}
+
+/* ===================== Small mobile (<=480px) ===================== */
+@media (max-width:480px){
+    ul{width:100%;max-width:100%;}
+    .mainh4-Top{letter-spacing:1px;}
+    .main_container-box1,.main_container-box2,.main_container-box3,.main_container-box4{padding:32px 22px;}
+    .team-container1_box1,.team-container1_box2,.team-container2_box3,.team-container2_box4{
+        grid-template-columns:1fr;
+        text-align:center;
     }
-    .main_container{
-        flex-wrap: wrap;
+    .team-container1box1_pic,.team-container1box2_pic{
+        grid-column:1;grid-row:auto;margin:0 auto;
     }
-    .OurWay .ourway-h1_heading{
-        margin-left: -300px;
-        font-size: 40px;
+    .teamcontainer1-p1,.teamcontainer1b2-p1,.teamcontainer1-h4,.teamcontainer1b2-h4,.teamcontainer1-p2,.teamcontainer1b2-p2{
+        grid-column:1;
     }
-    .OurWay .ourway-paragraph{
-        margin-left: 20px;
-        font-size: 13px;
-        width: 400px;
-    }
-    .ourway-paragraph_span{
-        margin-left: -200px;
-    }
+    .teambox1-social_icons,.teambox2-social_icons{justify-content:center;}
+    .container1-testimonial_box1pic{width:80px;height:80px;border-width:6px;}
+    .form-heading_h1{font-size:26px;}
+    .form-paragraph{font-size:16px;}
 }
