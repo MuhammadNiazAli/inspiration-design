@@ -506,3 +506,108 @@ li:hover{color:gray;}
 .footerlink{font-size:14px;font-family:'opensansmedium';color:white;margin-top:16px;}
 .nice{color:rgba(130,177,221,.616);}
 .nice:hover{color:gray;text-decoration:none;}
+
+/* ===================== Micro-details & animations ===================== */
+a{transition:color .25s ease, text-decoration-color .25s ease;}
+
+/* logo */
+.logo{transition:transform .3s ease;}
+.logo:hover{transform:scale(1.06) rotate(-2deg);}
+
+/* nav items */
+li{transition:color .25s ease, transform .25s ease;}
+li:hover{transform:translateX(6px);}
+
+.ri-menu-line{transition:transform .3s ease,color .25s ease;}
+.ri-menu-line:hover{transform:rotate(90deg);}
+.ri-close-large-fill{transition:transform .3s ease,color .25s ease;}
+.ri-close-large-fill:hover{transform:rotate(90deg);}
+
+/* dim backdrop behind the open drawer */
+body.no-scroll::after{
+    content:"";
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,.55);
+    z-index:150;
+    animation:fadeIn .35s ease;
+}
+@keyframes fadeIn{from{opacity:0;}to{opacity:1;}}
+
+/* hero image gentle entrance */
+.main-pic_rightside{animation:heroFloatIn .9s ease both;}
+@keyframes heroFloatIn{
+    from{opacity:0;transform:translateY(24px) scale(.96);}
+    to{opacity:1;transform:translateY(0) scale(1);}
+}
+
+/* buttons - tactile hover/press */
+.main-btn,.ourprinter-btn,.improve-btn,.about-btn,.contact-btn,.form-btn{
+    transition:transform .25s ease, box-shadow .25s ease, background-color .25s ease, border-color .25s ease;
+}
+.main-btn:hover,.ourprinter-btn:hover,.improve-btn:hover,.about-btn:hover,.contact-btn:hover,.form-btn:hover{
+    transform:translateY(-3px);
+    box-shadow:0 12px 26px rgba(0,0,0,.2);
+}
+.main-btn:active,.ourprinter-btn:active,.improve-btn:active,.about-btn:active,.contact-btn:active,.form-btn:active{
+    transform:translateY(-1px);
+    box-shadow:0 6px 14px rgba(0,0,0,.15);
+}
+
+/* cards - lift on hover */
+.main_container-box1,.main_container-box2,.main_container-box3,.main_container-box4,
+.container2-ourway_box1,.container2-ourway_box2,.container2-ourway_box3,.container2-ourway_box4,
+.team-container1_box1,.team-container1_box2,.team-container2_box3,.team-container2_box4,
+.testimonial-bo1,.testimonial-bo2,.testimonial-bo3,.testimonial-bo4,.testimonial-bo5,.testimonial-bo6,
+.bottombox1,.bottombox2,.bottombox3{
+    transition:transform .35s ease, box-shadow .35s ease;
+}
+.main_container-box1:hover,.main_container-box2:hover,.main_container-box3:hover,.main_container-box4:hover,
+.team-container1_box1:hover,.team-container1_box2:hover,.team-container2_box3:hover,.team-container2_box4:hover,
+.bottombox1:hover,.bottombox2:hover,.bottombox3:hover{
+    transform:translateY(-8px);
+    box-shadow:0 18px 34px rgba(0,0,0,.18);
+}
+.container2-ourway_box1:hover,.container2-ourway_box2:hover,.container2-ourway_box3:hover,.container2-ourway_box4:hover{
+    transform:translateY(-6px);
+}
+.testimonial-bo1:hover,.testimonial-bo2:hover,.testimonial-bo3:hover,.testimonial-bo4:hover,.testimonial-bo5:hover,.testimonial-bo6:hover{
+    transform:translateY(-6px);
+}
+
+/* circles + "more" links */
+.container2 [class*="_circle"]{transition:transform .3s ease;}
+.container2-ourway_box1:hover [class*="_circle"],
+.container2-ourway_box2:hover [class*="_circle"],
+.container2-ourway_box3:hover [class*="_circle"],
+.container2-ourway_box4:hover [class*="_circle"]{transform:scale(1.15);}
+
+/* photos - subtle zoom on hover */
+.team-container1box1_pic,.team-container1box2_pic,.container1-testimonial_box1pic{
+    transition:transform .4s ease;
+}
+.team-container1box1_pic:hover,.team-container1box2_pic:hover,.container1-testimonial_box1pic:hover{
+    transform:scale(1.08);
+}
+
+/* social icons */
+.social-1{transition:transform .25s ease;}
+.social-1:hover{transform:translateY(-4px) scale(1.1);}
+
+/* form input focus glow */
+.inp-email{transition:border-color .25s ease;}
+.inp-email:focus{border-bottom-color:var(--accent);}
+
+/* ---- scroll reveal (driven by js/script.js) ---- */
+.reveal{
+    opacity:0;
+    transform:translateY(36px);
+    transition:opacity .7s ease, transform .7s ease;
+    will-change:opacity, transform;
+}
+.reveal.is-visible{opacity:1;transform:translateY(0);}
+
+@media (prefers-reduced-motion: reduce){
+    *{animation:none !important;transition:none !important;}
+    .reveal{opacity:1 !important;transform:none !important;}
+}

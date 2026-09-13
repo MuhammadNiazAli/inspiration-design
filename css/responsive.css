@@ -22,7 +22,6 @@
     .ourprinter{grid-template-areas:"pic" "heading" "para" "link" "btn";}
     .improve{grid-template-areas:"heading" "pic" "text" "link" "btn";}
     .about{grid-template-areas:"pic" "heading" "tagline" "para" "link" "btn" "boxes";}
-
     .Contactus{grid-template-columns:1fr;}
     .contact-pic,.contact-h1_heading,.contact-p1,.contact-p2,.contact-p3,.contact-p4,.contact-link,.contact-btn{
         grid-column:1;
@@ -54,12 +53,38 @@
     .main_container{margin-top:36px;}
 
     .OurWay,.team,.Testimonials{padding-top:60px;padding-bottom:60px;}
-    .container2-ourway_box1,.container2-ourway_box2,.container2-ourway_box3,.container2-ourway_box4{min-height:auto;}
 
+    /* Our way: give each year block a visible card so it doesn't read as one wall of text */
+    .container2{grid-template-columns:1fr;gap:22px;text-align:center;}
+    .container2-ourway_box1,.container2-ourway_box2,.container2-ourway_box3,.container2-ourway_box4{
+        min-height:auto;
+        background:rgba(255,255,255,.06);
+        border-left:4px solid var(--accent);
+        border-radius:16px;
+        padding:28px 24px;
+    }
+    .container2 [class*="_circle"]{margin-left:auto;margin-right:auto;}
+    .container2 p{margin-left:0 !important;}
+
+    /* Team: one card per row, no cramped side-by-side squeeze */
+    .team-container1,.team-container2{grid-template-columns:1fr;gap:24px;}
     .team-container1_box1,.team-container1_box2,.team-container2_box3,.team-container2_box4{
         grid-template-columns:90px 1fr;
     }
     .team-container1box1_pic,.team-container1box2_pic{width:80px;height:80px;}
+
+    /* Testimonials: one card per row on mobile */
+    .container1-testimonials,.container2-testimonials,.container3-testimonials{
+        grid-template-columns:1fr;
+        gap:26px;
+        margin-top:30px;
+    }
+    .testimonial-bo1,.testimonial-bo2,.testimonial-bo3,.testimonial-bo4,.testimonial-bo5,.testimonial-bo6{
+        text-align:center;
+        display:flex;
+        flex-direction:column;
+        align-items:center;
+    }
 
     .ourprinter,.improve,.about,.Contactus,.Bethefirst,.main,.OurWay,.team,.Testimonials,.footer{
         padding-left:var(--side);
