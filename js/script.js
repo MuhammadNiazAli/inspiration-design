@@ -77,3 +77,51 @@ document.addEventListener("click", (e) => {
 
     revealTargets.forEach((el) => revealObserver.observe(el));
 })();
+
+// GSAP-powered hero entrance + subtle scroll parallax (premium polish) >>>>>>>>
+// Previously gsap/ScrollTrigger were loaded but never used — the hero text
+// popped in instantly while only the hero image had an entrance animation.
+// This ties the whole hero together with one coordinated sequence and adds
+// a light depth-parallax on the large section images. Fully respects
+// prefers-reduced-motion and fails safe if GSAP doesn't load.
+(function () {
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (prefersReducedMotion || typeof gsap === 'undefined') return;
+
+    if (typeof ScrollTrigger !== 'undefined') {
+        gsap.registerPlugin(ScrollTrigger);
+    }
+
+    // Hero entrance: tag -> heading -> paragraph -> button -> feature cards,
+    // staggered with an easing curve that feels premium rather than mechanical.
+    gsap.timeline({ defaults: { ease: 'power3.out', duration: 0.8 } })
+        .from('.mainh4-Top', { opacity: 0, y: -18 })
+        .from('.mainh1-heading', { opacity: 0, y: 30 }, '-=0.55')
+        .from('.main-paragraph_withlink', { opacity: 0, y: 18 }, '-=0.55')
+        .from('.main-btn', { opacity: 0, y: 18 }, '-=0.55')
+        .from(
+            ['.main_container-box1', '.main_container-box2', '.main_container-box3', '.main_container-box4'],
+            { opacity: 0, y: 28, stagger: 0.12 },
+            '-=0.5'
+        );
+
+    // Gentle depth-parallax on the larger section illustrations while scrolling.
+    // (Hero image is skipped here since it already has its own CSS entrance animation.)
+    if (typeof ScrollTrigger !== 'undefined') {
+        ['.ourprinter-pic', '.improve-pic', '.about-pic', '.contact-pic'].forEach((selector) => {
+            const el = document.querySelector(selector);
+            if (!el) return;
+            gsap.to(el, {
+                y: -30,
+                ease: 'none',
+                scrollTrigger: {
+                    trigger: el,
+                    start: 'top bottom',
+                    end: 'bottom top',
+                    scrub: 1
+                }
+            });
+        });
+    }
+})();
+// <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
