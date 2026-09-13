@@ -22,7 +22,12 @@
     .ourprinter{grid-template-areas:"pic" "heading" "para" "link" "btn";}
     .improve{grid-template-areas:"heading" "pic" "text" "link" "btn";}
     .about{grid-template-areas:"pic" "heading" "tagline" "para" "link" "btn" "boxes";}
-    .Contactus{grid-template-areas:"pic" "heading" "p1" "btn";}
+
+    .Contactus{grid-template-columns:1fr;}
+    .contact-pic,.contact-h1_heading,.contact-p1,.contact-p2,.contact-p3,.contact-p4,.contact-link,.contact-btn{
+        grid-column:1;
+        grid-row:auto;
+    }
 
     .ourprinter-pic,.improve-pic,.about-pic,.contact-pic{
         max-width:480px;margin:0 auto;justify-self:center;
