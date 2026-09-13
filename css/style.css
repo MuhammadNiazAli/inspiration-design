@@ -475,25 +475,21 @@ li:hover{color:gray;}
     padding:80px var(--side);
     display:grid;
     grid-template-columns:1fr 1fr;
-    grid-template-areas:
-        "pic heading"
-        "pic p1"
-        "pic btn";
     column-gap:50px;
-    row-gap:16px;
+    row-gap:10px;
     align-items:start;
 }
-.contact-pic{grid-area:pic;width:100%;align-self:center;}
-.contact-h1_heading{grid-area:heading;font-size:clamp(28px,4vw,50px);font-family:'montserratbold';}
+.contact-pic{grid-column:1;grid-row:1 / span 10;width:100%;align-self:center;justify-self:center;}
+.contact-h1_heading{grid-column:2;font-size:clamp(28px,4vw,50px);font-family:'montserratbold';margin-bottom:10px;}
 .contact-p1,.contact-p2,.contact-p3,.contact-p4{
-    grid-area:p1;
+    grid-column:2;
     font-size:19px;font-family:'opensanslight';color:#000;margin-top:6px;max-width:400px;
 }
 .contact-sp1{color:#f56929;font-family:'montserratmedium';}
-.contact-link{grid-area:p1;font-size:16px;font-family:'opensanslight';font-weight:600;margin-top:16px;}
+.contact-link{grid-column:2;font-size:16px;font-family:'opensanslight';font-weight:600;margin-top:16px;}
 .contactlink{color:#000;text-underline-offset:6px;}
 .contactlink:hover{text-decoration-color:#f56929;}
-.contact-btn{
+.contact-btn{grid-column:2;
     grid-area:btn;
     padding:18px 60px;border-radius:10px;font-size:18px;font-family:'opensansmedium';
     background-color:#000000;color:white;border:1px solid #000000;cursor:pointer;justify-self:start;margin-top:10px;
