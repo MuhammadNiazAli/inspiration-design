@@ -1,22 +1,38 @@
-// hamme icon crose icon ul>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<< 
+// hamburger / close icon / off-canvas nav drawer >>>>>>>>>>>>>>
 let menuicon = document.querySelector(".ri-menu-line");
 let croseicon = document.querySelector(".ri-close-large-fill");
-let ul = document.querySelector("ul");
-let backHere = 0
+let navList = document.querySelector("header ul");
 
-menuicon.addEventListener("click",()=>{
-    if(backHere==0){
-        ul.style.marginLeft="-10px"
-    ul.style.transition="0.8s"
-    backHere=1
-    }else{
-        ul.style.marginLeft="-500px"
-    ul.style.transition="0.9s"
-    backHere=0
+function openNav(){
+    navList.classList.add("nav-open");
+    document.body.classList.add("no-scroll");
+}
+function closeNav(){
+    navList.classList.remove("nav-open");
+    document.body.classList.remove("no-scroll");
+}
+
+menuicon.addEventListener("click", () => {
+    if (navList.classList.contains("nav-open")) {
+        closeNav();
+    } else {
+        openNav();
     }
-})
-croseicon.addEventListener("click",()=>{
-    ul.style.marginLeft="-500px"
-    ul.style.transition="0.9s"
-})
+});
+
+croseicon.addEventListener("click", closeNav);
+
+// close when a nav link is tapped
+document.querySelectorAll("header ul li").forEach((li) => {
+    li.addEventListener("click", closeNav);
+});
+
+// close when tapping outside the drawer
+document.addEventListener("click", (e) => {
+    const clickedInsideNav = navList.contains(e.target);
+    const clickedMenuIcon = menuicon.contains(e.target);
+    if (navList.classList.contains("nav-open") && !clickedInsideNav && !clickedMenuIcon) {
+        closeNav();
+    }
+});
 // ===Close===>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<
