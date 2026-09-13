@@ -39,10 +39,13 @@ document.addEventListener("click", (e) => {
 
 // scroll-reveal micro-animations (fade + rise into view), staggered per card row
 (function () {
+    // NOTE: hero elements (.mainh1-heading, .main_container-box1..4) are intentionally
+    // excluded here — they're animated by the GSAP hero timeline below instead.
+    // Having both systems touch the same elements caused a conflict where the
+    // heading/cards got stuck at a low opacity after the GSAP tween finished.
     const revealTargets = document.querySelectorAll([
-        '.mainh1-heading', '.ourway-h1_heading', '.ourprinter-h1_heading', '.team-h1_heading',
+        '.ourway-h1_heading', '.ourprinter-h1_heading', '.team-h1_heading',
         '.improve-h1_heading', '.testimonial-h1_heading', '.about-h1_heading', '.contact-h1_heading', '.form-heading_h1',
-        '.main_container-box1', '.main_container-box2', '.main_container-box3', '.main_container-box4',
         '.container2-ourway_box1', '.container2-ourway_box2', '.container2-ourway_box3', '.container2-ourway_box4',
         '.team-container1_box1', '.team-container1_box2', '.team-container2_box3', '.team-container2_box4',
         '.testimonial-bo1', '.testimonial-bo2', '.testimonial-bo3', '.testimonial-bo4', '.testimonial-bo5', '.testimonial-bo6',
@@ -94,7 +97,11 @@ document.addEventListener("click", (e) => {
 
     // Hero entrance: tag -> heading -> paragraph -> button -> feature cards,
     // staggered with an easing curve that feels premium rather than mechanical.
-    gsap.timeline({ defaults: { ease: 'power3.out', duration: 0.8 } })
+    const heroSelectors = '.mainh4-Top, .mainh1-heading, .main-paragraph_withlink, .main-btn, .main_container-box1, .main_container-box2, .main_container-box3, .main_container-box4';
+    gsap.timeline({
+        defaults: { ease: 'power3.out', duration: 0.8 },
+        onComplete: () => gsap.set(heroSelectors, { clearProps: 'opacity,transform' })
+    })
         .from('.mainh4-Top', { opacity: 0, y: -18 })
         .from('.mainh1-heading', { opacity: 0, y: 30 }, '-=0.55')
         .from('.main-paragraph_withlink', { opacity: 0, y: 18 }, '-=0.55')
